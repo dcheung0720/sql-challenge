@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS Employees(
 );
 
 CREATE TABLE IF NOT EXISTS Salaries(
-	emp_no INT NOT NULL PRIMARY KEY,
+	emp_no INT PRIMARY KEY,
 	salary INT NOT NULL,
 	FOREIGN KEY(emp_no) references Employees(emp_no)
 );
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS Departments(
 );
 
 CREATE TABLE IF NOT EXISTS Dept_Manager(
-	dept_no VARCHAR(4),
+	dept_no VARCHAR(4) NOT NULL,
 	emp_no INT NOT NULL,
 	FOREIGN KEY(emp_no) references Employees(emp_no),
 	FOREIGN KEY(dept_no) references Departments(dept_no),
@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS Dept_Manager(
 );
 
 CREATE TABLE IF NOT EXISTS Dept_Emp(
-	emp_no INT,
-	dept_no VARCHAR(4),
+	emp_no INT NOT NULL,
+	dept_no VARCHAR(4) NOT NULL,
 	FOREIGN KEY(emp_no) references Employees(emp_no),
 	FOREIGN KEY(dept_no) references Departments(dept_no),
 	PRIMARY KEY(dept_no, emp_no)
